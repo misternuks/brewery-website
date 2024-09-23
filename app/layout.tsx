@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+// import localFont from "next/font/local";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,11 +25,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <body className="bg-gray-100">
+      <header className="p-4 bg-primary text-white">
+        <nav className="container mx-auto flex justify-between">
+          <div>
+            <a href="/" className="text-2xl font-bold">Shiokaze Brewery</a>
+          </div>
+          <div className="space-x-4">
+            <a href="#bars" className="hover:underline">Bars</a>
+            <a href="#beers" className="hover:underline">Beers</a>
+          </div>
+        </nav>
+      </header>
+      <main className="container mx-auto p-4">{children}</main>
+      <footer className="p-4 text-center text-gray-500">
+        © {new Date().getFullYear()} Shiokaze Brewery
+      </footer>
+    </body>
+  </html>
   );
 }
